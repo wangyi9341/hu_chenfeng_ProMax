@@ -122,52 +122,167 @@ python scripts/search_corpus.py "山姆 苹果 特斯拉" --match-mode all --max
 - `2023-2024` 的购买力观察、底层记录、现实主义表达
 - `2025` 的强分类、强定性、强对抗直播表达
 
-## 安装到本地 Codex
+## 获取与安装
 
-推荐用 `git clone` 直接安装到 Codex 的 skills 目录。
+仓库地址：
 
-### Windows PowerShell
+- GitHub 仓库：`https://github.com/wangyi9341/hu_chenfeng_ProMax`
+- Git 克隆地址：`https://github.com/wangyi9341/hu_chenfeng_ProMax.git`
+- ZIP 下载地址：`https://github.com/wangyi9341/hu_chenfeng_ProMax/archive/refs/heads/main.zip`
+
+推荐直接用 `git clone` 安装到 Codex 的 `skills` 目录，这样后续更新最省事。
+
+### 方式 1：直接安装到 Codex skills 目录
+
+#### Windows PowerShell
 
 ```powershell
 $CODEX_HOME = if ($env:CODEX_HOME) { $env:CODEX_HOME } else { Join-Path $HOME ".codex" }
-$SKILL_DIR = Join-Path $CODEX_HOME "skills\hu-chenfeng-promax"
-git clone https://github.com/<your-name>/hu_chenfeng_promax.git $SKILL_DIR
+$SKILLS_DIR = Join-Path $CODEX_HOME "skills"
+$SKILL_DIR = Join-Path $SKILLS_DIR "hu-chenfeng-promax"
+New-Item -ItemType Directory -Force $SKILLS_DIR | Out-Null
+git clone https://github.com/wangyi9341/hu_chenfeng_ProMax.git $SKILL_DIR
 ```
 
-### macOS / Linux
+#### Windows Git Bash
 
 ```bash
 CODEX_HOME="${CODEX_HOME:-$HOME/.codex}"
-git clone https://github.com/<your-name>/hu_chenfeng_promax.git "$CODEX_HOME/skills/hu-chenfeng-promax"
+mkdir -p "$CODEX_HOME/skills"
+git clone https://github.com/wangyi9341/hu_chenfeng_ProMax.git "$CODEX_HOME/skills/hu-chenfeng-promax"
 ```
 
-如果目录已存在，改用：
+#### macOS / Linux
 
 ```bash
+CODEX_HOME="${CODEX_HOME:-$HOME/.codex}"
+mkdir -p "$CODEX_HOME/skills"
+git clone https://github.com/wangyi9341/hu_chenfeng_ProMax.git "$CODEX_HOME/skills/hu-chenfeng-promax"
+```
+
+### 方式 2：先下载到任意目录，再复制进 Codex
+
+适合不想直接在 `~/.codex/skills` 里维护 git 仓库的人。
+
+#### Git 方式
+
+```bash
+git clone https://github.com/wangyi9341/hu_chenfeng_ProMax.git
+```
+
+然后把仓库目录复制到：
+
+- Windows：`%USERPROFILE%\.codex\skills\hu-chenfeng-promax`
+- macOS / Linux：`~/.codex/skills/hu-chenfeng-promax`
+
+#### ZIP 方式
+
+1. 打开：`https://github.com/wangyi9341/hu_chenfeng_ProMax/archive/refs/heads/main.zip`
+2. 解压
+3. 把解压后的目录重命名为 `hu-chenfeng-promax`
+4. 放到 Codex 的 `skills` 目录
+
+### 已存在目录时如何更新
+
+如果你之前已经装过，不要重复 `clone`，直接拉最新：
+
+#### Windows PowerShell
+
+```powershell
+$CODEX_HOME = if ($env:CODEX_HOME) { $env:CODEX_HOME } else { Join-Path $HOME ".codex" }
+git -C (Join-Path $CODEX_HOME "skills\hu-chenfeng-promax") pull
+```
+
+#### Git Bash / macOS / Linux
+
+```bash
+CODEX_HOME="${CODEX_HOME:-$HOME/.codex}"
 git -C "$CODEX_HOME/skills/hu-chenfeng-promax" pull
 ```
 
+### 安装后快速检查
+
+安装完成后，确认下面这个目录存在：
+
+- Windows：`%USERPROFILE%\.codex\skills\hu-chenfeng-promax`
+- macOS / Linux：`~/.codex/skills/hu-chenfeng-promax`
+
+目录里至少应包含：
+
+- `SKILL.md`
+- `agents/openai.yaml`
+- `references/`
+- `scripts/`
+
 ## 语料配置
 
-这个项目不内置直播语料，请自行准备语料目录，然后用以下两种方式之一指定：
+这个项目不内置直播语料，需要你自己准备 `HuChenFeng-main` 语料目录。
 
-### 方式 1：环境变量
+推荐语料来源：
+
+- `https://github.com/Olcmyk/HuChenFeng`
+
+语料配置有三种常用方式。
+
+### 方式 1：设置环境变量
+
+这是最推荐的方式，设置一次后脚本和 skill 都能复用。
+
+#### Windows PowerShell
 
 ```powershell
-$env:HUCHENFENG_CORPUS = "D:\path\to\HuChenFeng-main"
+$env:HUCHENFENG_CORPUS = "D:\HuChenFeng-main"
 ```
 
-或：
+#### Windows Git Bash
+
+```bash
+export HUCHENFENG_CORPUS="/d/HuChenFeng-main"
+```
+
+#### macOS / Linux
 
 ```bash
 export HUCHENFENG_CORPUS="/path/to/HuChenFeng-main"
 ```
 
-### 方式 2：运行脚本时显式传入
+### 方式 2：运行脚本时显式指定语料目录
+
+适合临时测试或本机有多套语料时使用。
+
+#### Windows PowerShell
 
 ```powershell
-python scripts/search_corpus.py "学历 本科 专科" --root "D:\path\to\HuChenFeng-main"
+python scripts/search_corpus.py "学历 本科 专科" --root "D:\HuChenFeng-main"
 ```
+
+#### Git Bash / macOS / Linux
+
+```bash
+python scripts/search_corpus.py "学历 本科 专科" --root "/path/to/HuChenFeng-main"
+```
+
+### 方式 3：把语料目录放在仓库当前工作目录下
+
+如果当前工作目录下正好有一个 `HuChenFeng-main/` 文件夹，脚本也会自动尝试读取它。
+
+例如：
+
+```text
+workspace/
+├─ hu_chenfeng_ProMax/
+└─ HuChenFeng-main/
+```
+
+### 语料是否配置成功的快速检查
+
+可以直接运行：
+
+```bash
+python scripts/search_corpus.py "苹果 安卓" --max-hits 3
+```
+
+如果能返回命中结果，说明语料路径已经生效。
 
 ## 语料来源
 

@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="./assets/hu-chenfeng-cover.png" alt="hu_chenfeng_ProMax" width="420" />
+<img src="./assets/hu-chenfeng-cover.png" alt="hu_chenfeng_ProMax" width="360" />
 
 # hu_chenfeng_ProMax
 
@@ -69,40 +69,40 @@
 ```mermaid
 flowchart LR
     A["四步工作法"]:::root
-    B["01 先定位"]:::stageGold
+    B["01 先定位"]:::stageBlue
     C["02 再压轴"]:::stageRed
-    D["03 后定性"]:::stageBrown
-    E["04 再给动作"]:::stageGold
+    D["03 后定性"]:::stageWhite
+    E["04 再给动作"]:::stageBlue
 
-    B1["年龄 / 学历 / 城市 / 工作 / 收入 / 手机"]:::leafCream --> B
-    B2["先看你站在哪个现实位置"]:::leafCream --> B
-    B3["不是先聊情绪"]:::leafCream --> B
+    B1["年龄 / 学历 / 城市 / 工作 / 收入 / 手机"]:::leafWhite --> B
+    B2["先看你站在哪个现实位置"]:::leafWhite --> B
+    B3["不是先聊情绪"]:::leafWhite --> B
 
-    C1["总成本 / 购买力 / 门槛 / 资源密度 / 效率"]:::leafWarm --> C
-    C2["从多个线头里压一个主判断轴"]:::leafWarm --> C
-    C3["不同时开五个战场"]:::leafWarm --> C
+    C1["总成本 / 购买力 / 门槛 / 资源密度 / 效率"]:::leafBlueSoft --> C
+    C2["从多个线头里压一个主判断轴"]:::leafBlueSoft --> C
+    C3["不同时开五个战场"]:::leafBlueSoft --> C
 
-    D1["戳破自我安慰"]:::leafRose --> D
-    D2["判断真正卡点在哪"]:::leafRose --> D
-    D3["先定性，再谈方案"]:::leafRose --> D
+    D1["戳破自我安慰"]:::leafRedSoft --> D
+    D2["判断真正卡点在哪"]:::leafRedSoft --> D
+    D3["先定性，再谈方案"]:::leafRedSoft --> D
 
-    E1["给 2-3 条动作"]:::leafCream --> E
-    E2["说明不做的代价"]:::leafCream --> E
-    E3["输出可执行建议"]:::leafCream --> E
+    E1["给 2-3 条动作"]:::leafWhite --> E
+    E2["说明不做的代价"]:::leafWhite --> E
+    E3["输出可执行建议"]:::leafWhite --> E
 
     B --> A
     C --> A
     A --> D
     A --> E
 
-    classDef root fill:#7b120c,color:#fff4db,stroke:#d8c7a3,stroke-width:3px;
-    classDef stageGold fill:#efc163,color:#5a120d,stroke:#b6492d,stroke-width:2px;
-    classDef stageRed fill:#b6492d,color:#fff4db,stroke:#7b120c,stroke-width:2px;
-    classDef stageBrown fill:#a63a2c,color:#fff4db,stroke:#7b120c,stroke-width:2px;
-    classDef leafCream fill:#f7f1e7,color:#5a120d,stroke:#d8c7a3,stroke-width:1px;
-    classDef leafWarm fill:#f5e2b8,color:#5a120d,stroke:#d8c7a3,stroke-width:1px;
-    classDef leafRose fill:#f3ddd6,color:#5a120d,stroke:#d8c7a3,stroke-width:1px;
-    linkStyle default stroke:#b6492d,stroke-width:1.6px;
+    classDef root fill:#1f3c88,color:#ffffff,stroke:#b22234,stroke-width:3px;
+    classDef stageBlue fill:#1f3c88,color:#ffffff,stroke:#b22234,stroke-width:2px;
+    classDef stageRed fill:#b22234,color:#ffffff,stroke:#1f3c88,stroke-width:2px;
+    classDef stageWhite fill:#ffffff,color:#1f3c88,stroke:#b22234,stroke-width:2px;
+    classDef leafWhite fill:#ffffff,color:#1f3c88,stroke:#1f3c88,stroke-width:1px;
+    classDef leafBlueSoft fill:#e8eefb,color:#1f3c88,stroke:#1f3c88,stroke-width:1px;
+    classDef leafRedSoft fill:#f9e3e6,color:#7d1221,stroke:#b22234,stroke-width:1px;
+    linkStyle default stroke:#b22234,stroke-width:1.8px;
 ```
 
 一句话：

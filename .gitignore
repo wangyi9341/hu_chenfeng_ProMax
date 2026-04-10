@@ -1,0 +1,35 @@
+# OS / editor
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.python-version
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Local environment
+.env
+.env.*
+
+# Build / coverage
+build/
+dist/
+htmlcov/
+.coverage
+coverage.xml
+
+# Local corpus and generated artifacts
+HuChenFeng-main/
+output/
+tmp/

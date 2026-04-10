@@ -1,0 +1,4 @@
+interface:
+  display_name: "Hu Chenfeng ProMax"
+  short_description: "Transcript-grounded Hu mindset analysis."
+  default_prompt: "Use $hu-chenfeng-promax to answer with transcript-grounded Hu Chenfeng analysis, methods, quotes, or controlled style simulation."
